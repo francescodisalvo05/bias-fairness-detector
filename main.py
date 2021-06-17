@@ -22,8 +22,9 @@ def fairness(df_main, prediction_col, positive_outcome, sensitive_list):
 
 if __name__ == '__main__':
 
-    df = pd.read_csv('data/propublica_data_for_fairml.csv')
+    df = pd.read_csv('data/propublica_data_for_fairml_cleaned.csv.csv')
+
 
     # to do : update the DF in order to have just one "race" column instead of
     # sensitive_cols = ['Female', 'Age_Above_FourtyFive', 'Age_Below_TwentyFive']
-    fairness(df, 'Two_yr_Recidivism', 1, ['Female'])
+    # fairness(df, 'Two_yr_Recidivism', 1, ['Female'])

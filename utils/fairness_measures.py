@@ -44,7 +44,12 @@ def get_indipendence(df, prediction_col, cols):
                 # set two different list for each col, one for each class (0/1)
                 key = col + "-" + str(target)
 
-                dic_indipendence[key].append(numerator / denom)
+                if denom > 0:
+                    result = numerator / denom
+                else:
+                    result = -1
+
+                dic_indipendence[key].append(result)
 
     return dic_indipendence
 
@@ -92,11 +97,17 @@ def get_separation(df, target_col, prediction_col, positive_value, cols):
 
             for target in target_classes:
                 numerator = len(df[(df[target_col] == positive_value) & (df[prediction_col] == target) & (df[col] == c)])
-                denom = len(df[(df[prediction_col] == positive_value) & (df[col] == c)])
+                denom = len(df[(df[prediction_col] == target) & (df[col] == c)])
 
                 # set two different list for each col, one for each class (0/1)
                 key = col + "-" + str(target)
-                dic_separation[key].append(numerator / denom)
+
+                if denom > 0:
+                    result = numerator / denom
+                else:
+                    result = -1
+
+                dic_separation[key].append(result)
 
     return dic_separation
 
@@ -147,7 +158,13 @@ def get_sufficiency(df, target_col, prediction_col, positive_value, cols):
 
                 # set two different list for each col, one for each class (0/1)
                 key = col + "-" + str(target)
-                dic_sufficiency[key].append(numerator / denom)
+
+                if denom > 0:
+                    result = numerator / denom
+                else:
+                    result = -1
+
+                dic_sufficiency[key].append(result)
 
     return dic_sufficiency
 

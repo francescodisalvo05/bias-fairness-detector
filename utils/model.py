@@ -1,3 +1,5 @@
+import pandas as pd
+
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
@@ -19,6 +21,8 @@ def get_prediction(df, target):
     model.fit(X_train,y_train)
     y_pred = model.predict(X_test)
 
-    X_test['prediction'] = y_pred
+    X_out = X_test.copy()
+    X_out['score_factor'] = y_test
+    X_out['prediction'] = y_pred
 
-    return X_test
+    return X_out

@@ -26,15 +26,17 @@ def main():
     parser.add_argument('-b', '--bias', type=bool, default=True, help='Print bias measures')
     parser.add_argument('-f', '--fairness', type=bool, default=True, help='Print fairness measures')
     parser.add_argument('-d', '--dataset', type=str, default='data/propublica_data_for_fairml_cleaned.csv', help='Directory of the dataset')
-    parser.add_argument('-s', '--sensitive_attr', nargs='+', help='List of sensitive attributes (e.g. --sensitive_attr race gender', required=True)
-    parser.add_argument('-t', '--target', help='Target of the prediction', required=True)
+
+    # >> remove default and set required
+    parser.add_argument('-s', '--sensitive_attr', nargs='+', help='List of sensitive attributes (e.g. --sensitive_attr race gender', default=['Asian'])
+    parser.add_argument('-t', '--target', help='Target of the prediction', default='score_factor')
+    parser.add_argument('-p', '--positive_outcome', help='Positive outcome', default=1)
 
     parsed_args = parser.parse_args()
 
-    #df = pd.read_csv(parsed_args.dataset)
-
-    # df_with_prediction = get_prediction(df.drop(columns=parsed_args.sensitive_attr), 'score_factor')
-    # fairness(df_with_prediction, 'score_factor', 'prediction', 1, ['Asian'])
+    df = pd.read_csv(parsed_args.dataset)
+    df_with_prediction = get_prediction(df.drop(columns=parsed_args.sensitive_attr), parsed_args.target)
+    fairness(df_with_prediction, parsed_args.target, 'prediction', 1, parsed_args.sensitive_attr)
 
 if __name__ == '__main__':
     main()

@@ -7,11 +7,13 @@ from prettytable import PrettyTable
 from argparse import ArgumentParser
 
 
-def printTable(measures, header, sensitive_list):
+def printTable(title, measures, header, sensitive_list):
 
     # construct the header
     # -- first element
     table = PrettyTable(header)
+    # add the title to the table
+    table.title = title
 
     for i,feature in enumerate(sensitive_list):
 
@@ -28,6 +30,7 @@ def printTable(measures, header, sensitive_list):
 
 
 def bias(df_main, sensitive_list):
+    
     gini = get_gini_index(df_main,  sensitive_list)
     shannon = get_shannon_index(df_main,  sensitive_list)
     simpson = get_simpson_index(df_main,  sensitive_list)
@@ -35,10 +38,8 @@ def bias(df_main, sensitive_list):
 
     measures = [gini, shannon, simpson, ir]
     header =  ['Feature','Gini', 'Shannon', 'Simpson', 'Imbalanced Ratio']
-    printTable(measures,header, sensitive_list)
-
-
-
+    printTable('Bias measures',measures,header, sensitive_list)
+    
 
 def fairness(df_main, target_col, prediction_col, positive_outcome, sensitive_list):
 
@@ -64,10 +65,12 @@ def main():
     parsed_args = parser.parse_args()
 
     df = pd.read_csv(parsed_args.dataset)
+    
     #df_with_prediction = get_prediction(df.drop(columns=parsed_args.sensitive_attr), parsed_args.target)
     #fairness(df_with_prediction, parsed_args.target, 'prediction', 1, parsed_args.sensitive_attr)
 
     bias(df, parsed_args.sensitive_attr)
+
 
 if __name__ == '__main__':
     main()

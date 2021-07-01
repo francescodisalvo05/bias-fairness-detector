@@ -6,6 +6,8 @@ from prettytable import PrettyTable
 
 from argparse import ArgumentParser
 
+from utils.dataset import compact_binary_features
+
 
 def printTable(title, measures, header, sensitive_list):
 
@@ -49,20 +51,29 @@ def fairness(df_main, target_col, prediction_col, positive_outcome, sensitive_li
 
 
 def main():
+    sensitive_list = ['Age_Above_FourtyFive', 'Age_Below_TwentyFive', 'African_American',
+                      'Asian', 'Hispanic', 'Native_American', 'Other', 'Female']
 
     parser = ArgumentParser()
 
     parser.add_argument('-b', '--bias', type=bool, default=True, help='Print bias measures')
     parser.add_argument('-f', '--fairness', type=bool, default=True, help='Print fairness measures')
-    parser.add_argument('-d', '--dataset', type=str, default='data/propublica_data_for_fairml_cleaned.csv', help='Directory of the dataset')
+
+    parser.add_argument('-d', '--dataset', type=str, default='data/propublica_data_almost_cleaned.csv',
+                        help='Directory of the dataset')
 
     # >> remove default and set required
     parser.add_argument('-s', '--sensitive_attr', nargs='+', help='List of sensitive attributes (e.g. --sensitive_attr race gender',
-                              default=['Asian','African_American'])
+                              default=['Ethnicity'])
     parser.add_argument('-t', '--target', help='Target of the prediction', default='score_factor')
     parser.add_argument('-p', '--positive_outcome', help='Positive outcome', default=1)
 
     parsed_args = parser.parse_args()
+
+    # to do : add the neutral case (if they are all 0), use a new element
+    # such as for below 25 and above 45, the neutral one will be 25-45
+    # >> list_s = ['African_American','Asian', 'Hispanic', 'Native_American', 'Other',]
+    # >> compact_binary_features(parsed_args.dataset, list_s, 'Ethnicity', 'data/propublica_data_almost_cleaned.csv')
 
     df = pd.read_csv(parsed_args.dataset)
     
@@ -74,4 +85,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
 

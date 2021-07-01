@@ -59,28 +59,26 @@ def main():
     parser.add_argument('-b', '--bias', type=bool, default=True, help='Print bias measures')
     parser.add_argument('-f', '--fairness', type=bool, default=True, help='Print fairness measures')
 
-    parser.add_argument('-d', '--dataset', type=str, default='data/propublica_data_almost_cleaned.csv',
+    parser.add_argument('-d', '--dataset', type=str, default='data/propublica_data_cleaned.csv',
                         help='Directory of the dataset')
 
     # >> remove default and set required
     parser.add_argument('-s', '--sensitive_attr', nargs='+', help='List of sensitive attributes (e.g. --sensitive_attr race gender',
-                              default=['Ethnicity'])
+                              default=['Ethnicity','Age','Female'])
     parser.add_argument('-t', '--target', help='Target of the prediction', default='score_factor')
     parser.add_argument('-p', '--positive_outcome', help='Positive outcome', default=1)
 
     parsed_args = parser.parse_args()
 
-    # to do : add the neutral case (if they are all 0), use a new element
-    # such as for below 25 and above 45, the neutral one will be 25-45
-    # >> list_s = ['African_American','Asian', 'Hispanic', 'Native_American', 'Other',]
-    # >> compact_binary_features(parsed_args.dataset, list_s, 'Ethnicity', 'data/propublica_data_almost_cleaned.csv')
+
+    # list_s = ['Age_Above_FourtyFive','Age_Below_TwentyFive']
+    # compact_binary_features(parsed_args.dataset, list_s, 'Age', 'data/propublica_data_cleaned.csv', '25-45')
 
     df = pd.read_csv(parsed_args.dataset)
-    
+    bias(df, parsed_args.sensitive_attr)
+
     #df_with_prediction = get_prediction(df.drop(columns=parsed_args.sensitive_attr), parsed_args.target)
     #fairness(df_with_prediction, parsed_args.target, 'prediction', 1, parsed_args.sensitive_attr)
-
-    bias(df, parsed_args.sensitive_attr)
 
 
 if __name__ == '__main__':

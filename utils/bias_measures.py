@@ -31,7 +31,7 @@ def get_gini_index(df, cols):
         # calculate the gini index
         gini_index = norm_factor * (1 - np.sum(relative_frequencies**2))
 
-        gini_list.append(gini_index)
+        gini_list.append(round(gini_index, 2))
 
     return gini_list
 
@@ -65,7 +65,7 @@ def get_shannon_index(df, cols):
         # calculate the shannon index
         shannon_index = - norm_factor * np.sum(relative_frequencies * np.log(relative_frequencies))
 
-        shannon_list.append(shannon_index)
+        shannon_list.append(round(shannon_index, 2))
 
     return shannon_list
 
@@ -99,7 +99,7 @@ def get_simpson_index(df, cols):
         # calculate the shannon index
         simpson_index = norm_factor * (1 / np.sum(relative_frequencies ** 2) - 1)
 
-        simpson_list.append(simpson_index)
+        simpson_list.append(round(simpson_index, 2))
 
     return simpson_list
 
@@ -130,6 +130,6 @@ def get_imbalance_ratio(df, cols):
         # calculate the shannon index
         ir_index = np.min(frequences) / np.max(frequences)
 
-        ir_list.append(ir_index)
+        ir_list.append(round(ir_index, 2))
 
     return ir_list

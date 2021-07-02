@@ -43,9 +43,14 @@ python main.py --dataset 'data/propublica_data_cleaned.csv' --sensitive_attr Eth
 ```
 
 The result will be: 
-<p align="center">
-  <img src="img/bias-results.jpg" height="150px"/>
-</p>  
+
+|  `Feature`  | `Gini` | `Shannon` | `Simpson` | `Imbalanced Ratio` |
+|-----------|------|---------|---------|------------------|
+| Ethnicity | 0.73 |   0.62  |   0.31  |       0.0        |
+|    Age    | 0.87 |   0.89  |   0.69  |       0.37       |
+|   Female  | 0.62 |   0.7   |   0.45  |       0.24       |
+
+
 
 
 <a name="contribute"/>

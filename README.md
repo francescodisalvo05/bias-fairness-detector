@@ -17,6 +17,16 @@ All these index will be in the range [0,1], and by construction, the higher thei
 Reference : 
 * https://en.wikipedia.org/wiki/Diversity_index
 
+### Table of Contents  
+* [How can you run it?](#run)  
+* [Do you want to contribute?](#contribute)  
+* [What's next?](#next)  
+* [Do you want to reach me out? ](#contacts)  
+
+
+
+<a name="run"/>
+
 ## How can you run it?
 Once you clone the repository, you can run the script with the default dataset and settings:
 ```
@@ -38,6 +48,8 @@ The result will be:
 </p>  
 
 
+<a name="contribute"/>
+
 ## Do you want to contribute?
 
 1. Fork the repository
@@ -47,11 +59,14 @@ The result will be:
 Et voila! 
 
 
+<a name="next"/>
+
 ## What's next?
 In my to do list you can find at the moment:
 * streamlit interactive dashboard
 * implementation of fairness measures
 
+<a name="contacts"/>
 
 ## Do you want to reach me out? 
 * [![Linkedin](https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/francescodisalvo-pa/)

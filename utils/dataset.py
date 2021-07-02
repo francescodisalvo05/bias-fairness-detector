@@ -1,8 +1,7 @@
-
 import pandas as pd
 
 
-def compact_binary_features(dir_dataset, features, new_feature, new_path, neutral=None):
+def compact_non_binary_features(dir_dataset, features, new_feature, new_path, neutral=None):
     """
     Args:
          dir_dataset (str) : path of the dataset
@@ -34,3 +33,24 @@ def compact_binary_features(dir_dataset, features, new_feature, new_path, neutra
 
     df[new_feature] = pd.Series(new_feature_list)
     df.to_csv(new_path, index=False)
+
+
+if __name__ == '__main__':
+
+    # call here the cleaning methods that you need
+    # for example propublica's dataset had the following features:
+    # -- Two_yr_Recidivism,Number_of_Priors,score_factor,Age_Above_FourtyFive,Age_Below_TwentyFive,
+    # -- African_American,Asian,Hispanic,Native_American,Other,Female,Misdemeanor
+
+    # in order to compact all these binary features I've used two times "compact_non_binary_features"
+
+    # > list_s = ['African_American','Asian','Hispanic','Native_American','Other']
+    # > compact_non_binary_features('../data/propublica_data_for_fairml.csv', list_s, 'Ethnicity', '../data/propublica_data_cleaned.csv', 'Caucasian')
+
+    # > list_s = ['Age_Above_FourtyFive','Age_Below_TwentyFive']
+    # > compact_non_binary_features('../data/propublica_data_cleaned.csv', list_s, 'Age', '../data/propublica_data_cleaned.csv', '25-45')
+
+    # the final list of features will be:
+    # -- Two_yr_Recidivism,Number_of_Priors,score_factor,Female,Misdemeanor,Ethnicity,Age
+
+    pass

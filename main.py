@@ -44,16 +44,17 @@ def main():
 
     parser = ArgumentParser()
 
-    parser.add_argument('-b', '--bias', type=bool, default=True, help='Print bias measures')
-    parser.add_argument('-f', '--fairness', type=bool, default=True, help='Print fairness measures')
+    # work in progress
+    # parser.add_argument('-b', '--bias', type=bool, default=True, help='Print bias measures')
+    # parser.add_argument('-f', '--fairness', type=bool, default=True, help='Print fairness measures')
+    # parser.add_argument('-t', '--target', help='Target of the prediction', default='score_factor')
+    # parser.add_argument('-p', '--positive_outcome', help='Positive outcome', default=1)
 
     parser.add_argument('-d', '--dataset', type=str, default='data/propublica_data_cleaned.csv',
                         help='Directory of the dataset')
 
     parser.add_argument('-s', '--sensitive_attr', nargs='+', help='List of sensitive attributes (e.g. --sensitive_attr race gender',
                               default=['Ethnicity','Age','Female'])
-    parser.add_argument('-t', '--target', help='Target of the prediction', default='score_factor')
-    parser.add_argument('-p', '--positive_outcome', help='Positive outcome', default=1)
 
     parsed_args = parser.parse_args()
     df = pd.read_csv(parsed_args.dataset)

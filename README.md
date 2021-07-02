@@ -43,7 +43,7 @@ The default [dataset](https://www.kaggle.com/danofer/compass) is the one used fo
 
 For example: 
 ```
-python main.py --dataset 'data/propublica_data_cleaned.csv' --sensitive_attr Ethnicity Age Female
+python main.py --dataset data/propublica_data_cleaned.csv --sensitive_attr Ethnicity Age Female
 ```
 
 The result will be: 

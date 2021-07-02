@@ -1,5 +1,6 @@
 from utils.bias_measures import *
-from utils.model import *
+
+import pandas as pd
 
 from prettytable import PrettyTable
 

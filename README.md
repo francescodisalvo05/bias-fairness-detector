@@ -1,5 +1,9 @@
 # Bias and Fairness Detector
 
+| **License** | ![APM](https://img.shields.io/apm/l/vim-mode?color=orange&label=License&logo=MIT) |
+| ----- | ---- |
+| **Libraries** |  ![APM](https://img.shields.io/badge/Pandas-1.2.5-green) ![APM](https://img.shields.io/badge/Numpy-1.21-green) ![APM](https://img.shields.io/badge/PrettyTable-2.1-green) 
+
 <p align="center">
   <img src="img/bg.png" height="300px"/>
 </p>

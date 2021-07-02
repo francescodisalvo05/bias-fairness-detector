@@ -1,5 +1,7 @@
 .idea
-
+venv-bias/
+utils/model.py
+utils/fairness_measures.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

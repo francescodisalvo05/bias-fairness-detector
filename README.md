@@ -8,7 +8,7 @@
   <img src="img/bg.png" height="300px"/>
 </p>
 
-One of the biggest challenges in Machine Learning is dealing with biased datasets. Having autonomous decision making systems (ADM) trained with biased datasets might have strong negative consequences on their lives (see for example the [Compass case](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm)).
+One of the biggest challenges in Machine Learning is dealing with biased datasets. Having autonomous decision making systems (ADM) trained with biased datasets might have strong negative consequences on the lives of their data subjects (see for example the [Compass case](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm)).
 
 In this repository I provided an easy way for measuring the bias of your datasets. There are several biases measures, these are the ones that I have implemented:
 * Gini Simpson diversity index
